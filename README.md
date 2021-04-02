@@ -1,4 +1,4 @@
-# swiftmailer only test
+# Mailer PHP
 
 ## Clone the project
 
@@ -27,6 +27,6 @@ $ composer test
 
 ## Sending mail
 ```
-$ php sender.php
+$ php run.php
 ```
 
