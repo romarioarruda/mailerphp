@@ -9,7 +9,7 @@ class SwiftTest extends TestCase
 {
     public function testObjectCanBeConstructed()
     {
-        $this->assertInstanceOf(Swift::class, new Swift);
+        $this->assertInstanceOf(Swift::class, new Swift());
     }
 
     /**
