@@ -8,10 +8,13 @@ class Swift implements MailerInterface
 {
     private $mailer;
     private $env;
+    private $data;
 
-    public function __construct()
+    public function __construct(array ...$data)
     {
         $this->env = parse_ini_file('env.ini');
+
+        $this->data = $data[0];
 
         $transport = new \Swift_SmtpTransport($this->env['smtp_service'], $this->env['smpt_port']);
         $transport->setEncryption($this->env['smpt_encryption']);
@@ -23,11 +26,13 @@ class Swift implements MailerInterface
 
     public function send()
     {
+        [$mail, $name, $title, $text] = $this->data;
+
         $message = new \Swift_Message();
-        $message->setSubject('Here is title');
+        $message->setSubject($title);
         $message->setFrom([$this->env['smtp_user'] => 'John Doe']);
-        $message->setTo(['romarioarruda98@gmail.com' => 'Romário Arruda']);
-        $message->setBody('Here is the message itself');
+        $message->setTo([$mail => $name]);
+        $message->setBody($text);
 
         $this->mailer->send($message);
     }

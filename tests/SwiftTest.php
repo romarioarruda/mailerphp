@@ -20,7 +20,12 @@ class SwiftTest extends TestCase
         $this->expectOutputString('Email disparado.');
 
         try {
-            $mailer = new Swift();
+            $mailer = new Swift([
+                'romarioarruda98@gmail.com',
+                'Romário',
+                'Titulo de teste',
+                'Texto do email para teste'
+            ]);
             $mailer->send();
             echo "Email disparado.";
         } catch (Exception $msg) {
