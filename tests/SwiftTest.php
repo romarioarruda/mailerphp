@@ -12,6 +12,17 @@ class SwiftTest extends TestCase
         $this->assertInstanceOf(Swift::class, new Swift());
     }
 
+    public function testParseIniFiles()
+    {
+        $env = parse_ini_file('env.ini');
+
+        $status = array_filter($env, function ($item) {
+            return empty($item);
+        });
+
+        $this->assertEmpty($status);
+    }
+
     /**
     * @depends testObjectCanBeConstructed
     */
