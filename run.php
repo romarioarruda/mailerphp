@@ -3,11 +3,11 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 use App\Mailer;
 use App\Swift;
-use App\PHPMailer;
+use App\PHPMail;
 
-$mailer = new Mailer(new Swift([
+new Mailer(new PHPMail([
     'romarioarruda98@gmail.com',
-    'Romário',
+    'Romário Arruda',
     'Titulo de teste',
-    'Texto do email para teste'
+    'Esse conteúdo permite HTML <b>exemplo!</b>'
 ]));
